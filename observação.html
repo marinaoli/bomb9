@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>observações</title>
+
+    <style>
+.loader {
+  display: block;
+  --height-of-loader: 4px;
+  --loader-color: #d40000;
+  width: 130px;
+  height: var(--height-of-loader);
+  border-radius: 30px;
+  background-color: rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.loader::before {
+  content: "";
+  position: absolute;
+  background: var(--loader-color);
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  border-radius: 30px;
+  animation: moving 1s ease-in-out infinite;
+  ;
+}
+
+@keyframes moving {
+  50% {
+    width: 100%;
+  }
+
+  100% {
+    width: 0;
+    right: 0;
+    left: unset;
+  }
+}
+    </style>
+</head>
+<body>
+
+    <br><br><br><br><br><br><br>
+    <center>
+    <title>Adicionar Observações importantes</title>
+</head>
+<body>
+    <h1>Adicionar Observações importantes</h1>
+    
+    <input type="text" id="observacaoInput" placeholder="Digite sua observação">
+    <button onclick="adicionarObservacao()">Adicionar</button>
+    
+    <ul id="listaObservacoes">
+    </ul>
+
+    <script>
+        function adicionarObservacao() {
+            var input = document.getElementById("observacaoInput");
+            var observacao = input.value;
+            if (observacao.trim() !== "") {
+                var lista = document.getElementById("listaObservacoes");
+                var item = document.createElement("li");
+                item.textContent = observacao;
+                lista.appendChild(item);
+                input.value = ""; // Limpar o campo de entrada
+            }
+        }
+    </script>
+
+
+<div class="loader"></div>
+
+    </center>
+</body>
+</html>
